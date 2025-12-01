@@ -39,8 +39,41 @@
       align-items: center;
       margin-bottom: 30px;
     }
-    .project-item {
-      margin-bottom: 12px;
+    .paper {
+      display: flex;
+      margin-bottom: 30px;
+      gap: 20px;
+    }
+    .paper img {
+      width: 260px;
+      border-radius: 4px;
+    }
+    .paper-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+    .paper-venue {
+      font-style: italic;
+      margin: 0 0 8px 0;
+    }
+    ul {
+      padding-left: 18px;
+    }
+    @media (max-width: 700px) {
+      .paper {
+        flex-direction: column;
+      }
+      .paper img {
+        width: 100%;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .avatar {
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -50,32 +83,90 @@
     <img class="avatar" src="https://avatars.githubusercontent.com/longshot-pting" alt="Avatar">
     <div>
       <h1>Ting Pan</h1>
-      <p>Email: <a href="mailto:xxxx@example.com">xxxx@example.com</a></p>
+      <p>Email: <a href="mailto:pantingls@bupt.edu.cn">pantingls@bupt.edu.cn</a></p>
       <p><a href="https://github.com/longshot-pting">GitHub</a></p>
     </div>
   </div>
 
-  <p>Hello! I'm Ting Pan. This is my personal GitHub homepage.  
-  You can put a brief introduction here, such as your background, interests, current research, or work focus.</p>
-
-  <h2>Projects</h2>
-  <div class="project-item">
-    <strong>📌 Project 1 Title</strong><br>
-    Short description of the project.  
-    <a href="https://github.com/longshot-pting/your-project-link">[Code]</a>
-  </div>
-
-  <div class="project-item">
-    <strong>📌 Project 2 Title</strong><br>
-    Short description of the project.  
-    <a href="https://github.com/longshot-pting/your-project-link">[Code]</a>
-  </div>
+  <h2>About Me</h2>
+  <p>
+    I received my B.Eng. degree in Computer Science and Technology from Beijing University of Posts and Telecommunications (BUPT),
+    where I am currently pursuing my M.Sc. degree. My research interests include micro-motion–based gesture interaction,
+    pose-guided hand image generation, full-body teleoperation, and dexterous manipulation.
+  </p>
 
   <h2>Publications</h2>
-  <p>(If you have papers, list them here; otherwise可以删除此部分)</p>
 
-  <h2>Contact</h2>
-  <p>Email: xxxx@example.com</p>
+  <!-- Paper 1: DSW-LD -->
+  <div class="paper">
+  <img src="dsw-ld.png" alt="Architecture of Dual-Branch 3D Spatial-Aware Latent Diffusion">
+  <div>
+    <p class="paper-title">
+      A Dual-Branch 3D Spatial-Aware Latent Diffusion for Realistic Depth Image Synthesis
+    </p>
+    <p>
+      Shuang Hao, Pengfei Ren, Lei Zhang, Haifeng Sun, <strong>Ting Pan</strong>, Menghao Zhang, Cong Liu, Qi Qi, Jianxin Liao, JingYu Wang
+    </p>
+    <p class="paper-venue">ACM Multimedia (ACM MM), 2025</p>
+    <p>
+      Synthetic images serve as a promising alternative to real images in 3D hand pose estimation, providing accurate
+      annotations at a lower cost. However, the domain gap between real and synthetic images constrains the
+      generalization ability of hand pose estimation trained on synthetic data. Previous methods rely on Generative
+      Adversarial Networks (GANs) for domain translation; however, they fail to achieve realistic depth synthesis due to
+      instability and limited image quality. Diffusion models provide high-quality synthesis due to their stability and
+      controllability. However, existing methods often ignore the 3D structure awareness in hand image generation.
+      In this paper, we propose a Dual-Branch 3D Spatial-Aware Latent Diffusion (DSW-LD) for realistic depth image
+      generation. The Global Structure Module (GSM) and the Local Geometry Module (LGM) complement each other, with GSM
+      capturing global spatial structure through coarse-grained 3D joint features and LGM focusing on local geometric
+      details using fine-grained 3D mesh representations. To maintain the global structure consistency, we adopt a
+      layer-aware injection mechanism that enables the model to adaptively learn the optimal representation from fused
+      2D latent representations and 3D joint features. To explicitly align 3D and 2D features of local regions and
+      enhance the flexibility of feature matching, we design a dynamic depth-aware interpolation to project 3D mesh
+      features into 2D image space. Both quantitative and qualitative experimental results demonstrate the superiority
+      of our method over the state-of-the-arts for realistic depth synthesis. Compared to training only on real depth
+      images, our method enables the hand pose estimator to achieve significantly better performance with our synthetic
+      data and less real data (10%).
+    </p>
+  </div>
+</div>
+
+
+  <!-- Paper 2: CADA-MaskFormer -->
+  <div class="paper">
+  <img src="cada-maskformer.png" alt="Architecture of CADA-MaskFormer">
+  <div>
+    <p class="paper-title">
+      MaskFormer with Improved Encoder–Decoder Module for Semantic Segmentation of Fine-Resolution Remote Sensing Images
+    </p>
+    <p>
+      Zhuoxuan Li, Junli Yang, Bin Wang, Yaqi Li, <strong>Ting Pan</strong>
+    </p>
+    <p class="paper-venue">IEEE International Conference on Image Processing (ICIP), 2022</p>
+    <p>
+      In 2021, the Transformer-based models have demonstrated extraordinary achievement in the field of computer vision.
+      Among which, MaskFormer, a Transformer-based model adopting the mask classification method, is an outstanding
+      model in both semantic segmentation and instance segmentation. Considering the specific characteristics of
+      semantic segmentation of remote sensing images (RSIs), we design CADA-MaskFormer (a mask classification-based
+      model with Cross-Shaped Window self-Attention and Densely connected feature Aggregation) based on MaskFormer by
+      improving its encoder and pixel decoder. Concretely, the mask classification that generates one or even more masks
+      for specific category to perform the elaborate segmentation is especially suitable for handling the characteristic
+      of large within-class and small between-class variance of RSIs. Furthermore, we apply the Cross-Shaped Window
+      self-attention mechanism to model the long-range context information contained in RSIs at maximum extent without
+      the increasing of computational complexity. In addition, the Densely Connected Feature Aggregation Module (DCFAM)
+      is used as the pixel decoder to incorporate multi-level feature maps from the encoder to get a finer semantic
+      segmentation map. Extensive experiments conducted on two remotely sensed semantic segmentation datasets Potsdam
+      and Vaihingen achieve 91.88% and 91.01% in OA index respectively, outperforming most of competitive models
+      designed for RSIs.
+    </p>
+  </div>
+</div>
+
+
+  <h2>Awards</h2>
+  <ul>
+    <li>Outstanding Graduate Student, Beijing University of Posts and Telecommunications, 2025</li>
+    <li>Outstanding Graduate Student, National Key Laboratory of Network and Switching Technology</li>
+  </ul>
 
 </body>
 </html>
